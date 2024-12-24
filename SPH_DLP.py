@@ -1,3 +1,4 @@
+import time
 from math import gcd
 from sympy import factorint
 
@@ -58,11 +59,21 @@ def silver_pohlig_hellman(alpha, beta, p):
     x = solve_congruences(congruences, p_minus_1)  # Розв'язуємо систему конгруенцій застосовуючи КТЛ
     return x
 
-if __name__ == "__main__":
+def main():
      
     alpha = 6  # Генератор групи
     beta = 7531  # Елемент групи
     p = 3257 # Модуль групи
 
+    start_time = time.perf_counter()
+    
     x = silver_pohlig_hellman(alpha, beta, p)
-    print(f"Дискретний логарифм: x = {x}")
+    
+    end_time = time.perf_counter()
+    elapsed_time = end_time - start_time
+    
+    print(f"Дискретний логарифм: {x}")
+    print(f"Час виконання: {elapsed_time:.9f} секунд")
+
+if __name__ == "__main__":
+    main()

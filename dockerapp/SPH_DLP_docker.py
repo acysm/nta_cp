@@ -1,3 +1,4 @@
+import time
 from math import gcd
 from sympy import factorint
 
@@ -61,8 +62,15 @@ def main():
     beta = int(input("Введіть базу (Елемент групи): "))
     p = int(input("Введіть p (модуль групи): "))
     
+    start_time = time.perf_counter()
+    
     x = silver_pohlig_hellman(alpha, beta, p)
+    
+    end_time = time.perf_counter()
+    elapsed_time = end_time - start_time
+    
     print(f"Дискретний логарифм: {x}")
+    print(f"Час виконання: {elapsed_time:.9f} секунд")
 
 if __name__ == "__main__":
     main()

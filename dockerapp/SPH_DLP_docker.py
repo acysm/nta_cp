@@ -1,6 +1,5 @@
 from math import gcd
 from sympy import factorint
-import argparse
 
 def build_table(alpha, p, prime_factors):
     tables = {}
@@ -58,14 +57,11 @@ def silver_pohlig_hellman(alpha, beta, p):
     return x
 
 def main():
-    parser = argparse.ArgumentParser(description="Алгоритм Сiльвера-Полiга-Гелмана")
-    parser.add_argument("--alpha", type=int, required=True, help="Генератор групи")
-    parser.add_argument("--beta", type=int, required=True, help="Елемент групи")
-    parser.add_argument("--p", type=int, required=True, help="Модуль")
-    args = parser.parse_args()
-
-    # Call your Silver-Pohlig-Hellman function her
-    x = silver_pohlig_hellman(args.alpha, args.beta, args.p)
+    alpha = int(input("Введіть альфа (Генератор групи): "))
+    beta = int(input("Введіть базу (Елемент групи): "))
+    p = int(input("Введіть p (модуль групи): "))
+    
+    x = silver_pohlig_hellman(alpha, beta, p)
     print(f"Дискретний логарифм: {x}")
 
 if __name__ == "__main__":

@@ -65,4 +65,4 @@ if __name__ == "__main__":
     p = 3257 # Модуль групи
 
     x = silver_pohlig_hellman(alpha, beta, p)
-    print(f"Дискртній логарифм числа beta x = {x}")
+    print(f"Дискретний логарифм: x = {x}")

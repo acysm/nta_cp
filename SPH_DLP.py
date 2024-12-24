@@ -61,19 +61,26 @@ def silver_pohlig_hellman(alpha, beta, p):
 
 def main():
      
-    alpha = 6  # Генератор групи
-    beta = 7531  # Елемент групи
-    p = 3257 # Модуль групи
+    alpha = 420275368062
+    beta = 693605487397
+    p = 863026229479
+    time_limit = 300
 
     start_time = time.perf_counter()
     
-    x = silver_pohlig_hellman(alpha, beta, p)
-    
+    x = None
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time
-    
-    print(f"Дискретний логарифм: {x}")
-    print(f"Час виконання: {elapsed_time:.9f} секунд")
+
+    if elapsed_time > time_limit:
+        print("Час виконання перевищує 300 секунд. Обчислення припинено.")
+    else:
+        x = silver_pohlig_hellman(alpha, beta, p)
+        end_time = time.perf_counter()
+        elapsed_time = end_time - start_time
+
+        print(f"Дискретний логарифм: {x}")
+        print(f"Час виконання: {elapsed_time:.9f} секунд")
 
 if __name__ == "__main__":
     main()
